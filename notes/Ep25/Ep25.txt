@@ -1,0 +1,60 @@
+//Ep 25
+//anyone make pathfinding with this just put this code in a room start event: #macro TILE_SIZE 16; global.mpGrid = 0;
+
+
+
+//get tiles in rooms
+
+var _w = ceil(room_width / TILE_SIZE);
+
+var _h = ceil(room_height / TILE_SIZE);
+
+
+
+//create pathfinding grid
+
+global.mpGrid = mp_grid_create(0, 0, _w, _h, TILE_SIZE, TILE_SIZE)
+
+
+
+//add oWall to the mp grid
+
+mp_grid_add_instances(global.mpGrid, oWall, false)     and this in the chase script var _path = path_add()
+
+	
+
+	sprite_index = sprMove;	
+
+	
+
+	if (instance_exists(target)){
+
+		xTo= target.x;
+
+		yTo= target.y;
+
+	}
+
+	
+
+	
+
+	image_speed = 1;
+
+	dir = point_direction(x,y,targetX,targetY);
+
+	
+
+	var _foundTarget = mp_grid_path(global.mpGrid,_path, x,y, targetX,targetY, true)
+
+	
+
+	if (_foundTarget){
+
+		path_start(_path, enemySpeed, path_action_stop, false)
+
+	}
+
+	
+
+	if (moveX != 0) image_xscale = sign(moveX)

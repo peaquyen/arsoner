@@ -1,0 +1,34 @@
+#1: when throwing things, if it layer eachother, we can't throw it!
+#2: the arrow sprite still changed in the log game even if the game isnt save. the postion is the same
+#3: {"playerHealth":3.0,"playerItemUnlocked":[false,false,false,false],"playerHasAnyItem":false,
+"playerAmmo":[-1.0,0.0,0.0,-1.0],"playerMoney":1000.0,
+"targetY":-1.0,"room":2,"playerEquipped":1,"targetX":-1.0,"questStatus":{"TheHatQuest":0.0},"playerHealthMax":3.0}
+Game saved!
+//Why the target is -1?
+
+___________________________________________
+############################################################################################
+ERROR in
+action number 1
+of  Step Event0
+for object oText:
+
+Unable to find any instance for object index '2' name 'oArrowDrop'
+ at gml_Script_PurchaseItem (line 14) -                      
+ case ITEM.BOW: _desc = "The bow!\nFire with the activate key to damage enemies, \nfind ammo in the world!"; _item.sprite_index = sArrowDrop; break;
+############################################################################################
+gml_Script_PurchaseItem (line 14)
+gml_Script_DialogueResponses (line 20) -               case 6: PurchaseItem(activate.item, activate.itemAmount, activate.itemCost, activate.itemRepeatable); break;
+gml_Object_oText_Step_0 (line 25) -                      with (originInstance) DialogueResponses(other.responseScripts[other.responseSelected]);
+
+
+global.targetRoom = -1;
+if 	(_json[? "targetX"] != noone || _json[? "targetY"] != noone ){
+	global.targetX = _json[? "targetX"];
+	global.targetY = _json[? "targetY"];
+}
+else
+{
+	global.targetX = -1
+	global.targetY = -1;
+}

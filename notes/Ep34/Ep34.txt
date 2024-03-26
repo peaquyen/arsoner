@@ -1,0 +1,4 @@
+In case anyone wants to know
+hSpeed = dcos(inputDirection)*speedWalk*inputMagnitude;
+vSpeed = -dsin(inputDirection)*speedWalk*inputMagnitude;
+Should be the same as lengthdir
